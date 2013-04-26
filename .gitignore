@@ -35,3 +35,25 @@ profile
 *.OTHER
 
 # monodevelop project files
+BrickGameRacing/Library
+BrickGameRacing/Temp
+BrickGameRacing/Assembly-CSharp-Editor-vs.csproj
+BrickGameRacing/Assembly-CSharp-Editor.csproj
+BrickGameRacing/Assembly-CSharp-firstpass-vs.csproj
+BrickGameRacing/Assembly-CSharp-firstpass.pidb
+BrickGameRacing/Assembly-CSharp-vs.csproj
+BrickGameRacing/Assembly-CSharp.csproj
+BrickGameRacing/Assembly-CSharp.pidb
+BrickGameRacing/Assembly-UnityScript.pidb
+BrickGameRacing/assembly-csharp-firstpass.csproj
+BrickGameRacing/assembly-unityscript-vs.unityproj
+BrickGameRacing/assembly-unityscript.unityproj
+BrickGameRacing/Assembly-UnityScript-Editor-firstpass-vs.unityproj
+BrickGameRacing/Assembly-UnityScript-Editor-firstpass.unityproj
+BrickGameRacing/Assembly-UnityScript-firstpass-vs.unityproj
+BrickGameRacing/Assembly-UnityScript-firstpass.unityproj
+BrickGameRacing/Assembly-UnityScript-vs.unityproj
+BrickGameRacing/Assembly-UnityScript.unityproj
+BrickGameRacing/RedsRevenge.userprefs
+BrickGameRacing/Assembly-Boo-vs.booproj
+BrickGameRacing/Assembly-Boo.booproj
