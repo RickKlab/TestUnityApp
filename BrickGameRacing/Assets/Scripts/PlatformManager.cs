@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlatformManager : MonoBehaviour {
 	
-	public GameObject[] planes;
+	public RoadObject[] planes;
 	public GameObject car;
 	
 	private float currentPosition;
@@ -24,7 +24,10 @@ public class PlatformManager : MonoBehaviour {
 		{
 			Vector3 pos = new Vector3(planes[index].transform.position.x, planes[index].transform.position.y, planes[index].transform.position.z + 120);
 			planes[index].transform.position= pos;
-
+			
+			RoadObject road = (RoadObject)planes[index].GetComponent("RoadObject");
+			road.RandomObstacle();
+			
 			if(index < 3)
 				index++;
 			else

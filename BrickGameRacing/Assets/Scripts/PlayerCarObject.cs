@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerCarObject : MonoBehaviour {
 	
+	private float maxX = 3.5f;
+	private float minX = -3.5f;
+	
 	public float movementSpeed = 0.5f;
 	public float steeringSpeed = 30.0f;
 	public bool isPlayerObject, collided;
@@ -28,14 +31,13 @@ public class PlayerCarObject : MonoBehaviour {
 			{
 				//Show Particle crash
 				Debug.Log("Crash");
-				//Destroy(this);
 				renderer.enabled = false;
 			}
 			
 			//Steady position in x-axis
 			Vector3 pos = transform.position;
 			pos.z = pos.z;
-			pos.x = Mathf.Clamp(pos.x, -3.5f, 3.5f);;
+			pos.x = Mathf.Clamp(pos.x, minX, maxX);
 			pos.y = Mathf.Clamp(pos.y, 0.0f, 0.0f);
 			transform.position = pos;
 		
@@ -46,6 +48,7 @@ public class PlayerCarObject : MonoBehaviour {
 	{
 		if(col.tag == "Obstacle")
 			collided = true;
+			Application.LoadLevel(2);
 	}
 	
 }
