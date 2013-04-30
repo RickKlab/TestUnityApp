@@ -12,6 +12,7 @@ public class PlatformManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentPosition = car.transform.position.z;
+		
 		index = 0;
 		distanceChecker = 30;
 	}

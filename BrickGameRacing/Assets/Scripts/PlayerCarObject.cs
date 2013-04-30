@@ -10,9 +10,14 @@ public class PlayerCarObject : MonoBehaviour {
 	public float steeringSpeed = 30.0f;
 	public bool isPlayerObject, collided;
 	
+	public ParticleSystem Explosion;
+	
+	private float DistanceMark;
+	
 	// Use this for initialization
 	void Start () {
 		collided = false;
+		DistanceMark = 100;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +35,6 @@ public class PlayerCarObject : MonoBehaviour {
 			else
 			{
 				//Show Particle crash
-				Debug.Log("Crash");
 				renderer.enabled = false;
 			}
 			
@@ -40,15 +44,31 @@ public class PlayerCarObject : MonoBehaviour {
 			pos.x = Mathf.Clamp(pos.x, minX, maxX);
 			pos.y = Mathf.Clamp(pos.y, 0.0f, 0.0f);
 			transform.position = pos;
-		
+			
+			if(pos.z > DistanceMark )
+			{
+				movementSpeed += 0.05f;
+				DistanceMark += 100;
+			}			
 		}
 	}
 	
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.tag == "Obstacle")
+		{
 			collided = true;
-			Application.LoadLevel(2);
+			
+			Explosion.Play();
+			//Delay
+			StartCoroutine(EndGame(2.0f));
+		}
+	}
+	
+	IEnumerator EndGame(float delay)
+	{
+    	yield return new WaitForSeconds(delay);
+    	Application.LoadLevel(2);
 	}
 	
 }
