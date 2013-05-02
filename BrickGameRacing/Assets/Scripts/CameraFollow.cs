@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 	
-	public PlayerCarObject car;
+	public PlayerCarObject Car;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,11 +14,10 @@ public class CameraFollow : MonoBehaviour {
 	void Update () 
 	{
 		//Stop Camera when car collides
-		if(!car.collided)
+		if(!Car.collided)
 		{
 			//forward movement
-			transform.Translate(Vector3.up * car.movementSpeed);
+			transform.Translate(Vector3.up * Car.movementSpeed);
 		}
-	
 	}
 }

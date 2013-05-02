@@ -35,6 +35,8 @@ public class PlatformManager : MonoBehaviour {
 				index = 0;
 			
 			distanceChecker += 30;
+			
+			
 		}
 	}
 }

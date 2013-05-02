@@ -6,18 +6,24 @@ public class PlayerCarObject : MonoBehaviour {
 	private float maxX = 3.5f;
 	private float minX = -3.5f;
 	
-	public float movementSpeed = 0.5f;
+	public float movementSpeed = 0.2f;
+	public float maxSpeed = 3.0f;
+	
 	public float steeringSpeed = 30.0f;
 	public bool isPlayerObject, collided;
 	
 	public ParticleSystem Explosion;
 	
-	private float DistanceMark;
+	public float DistanceMark;
+	
+	public AudioClip ExplodeSound;
 	
 	// Use this for initialization
 	void Start () {
 		collided = false;
 		DistanceMark = 100;
+		
+		audio.clip = ExplodeSound;
 	}
 	
 	// Update is called once per frame
@@ -45,10 +51,15 @@ public class PlayerCarObject : MonoBehaviour {
 			pos.y = Mathf.Clamp(pos.y, 0.0f, 0.0f);
 			transform.position = pos;
 			
+			//adjust speed with longer distance traveled
 			if(pos.z > DistanceMark )
-			{
-				movementSpeed += 0.05f;
-				DistanceMark += 100;
+			{	
+				if(movementSpeed < maxSpeed)
+				{
+					steeringSpeed += 3.0f;
+					movementSpeed += 0.03f;
+					DistanceMark += 100;
+				}
 			}			
 		}
 	}
@@ -60,11 +71,14 @@ public class PlayerCarObject : MonoBehaviour {
 			collided = true;
 			
 			Explosion.Play();
+			//Play Sound
+			audio.PlayOneShot(ExplodeSound);
 			//Delay
 			StartCoroutine(EndGame(2.0f));
 		}
 	}
 	
+	//Delay before changed Scene
 	IEnumerator EndGame(float delay)
 	{
     	yield return new WaitForSeconds(delay);
