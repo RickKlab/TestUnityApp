@@ -10,7 +10,7 @@ public class PlayerCarObject : MonoBehaviour {
 	public float maxSpeed = 3.0f;
 	
 	public float steeringSpeed = 30.0f;
-	public bool isPlayerObject, collided;
+	public bool isPlayerObject, collided, IsPaused;
 	
 	public ParticleSystem Explosion;
 	
@@ -23,13 +23,15 @@ public class PlayerCarObject : MonoBehaviour {
 		collided = false;
 		DistanceMark = 100;
 		
+		IsPaused = false;
+		
 		audio.clip = ExplodeSound;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(isPlayerObject)
+		if(isPlayerObject && !IsPaused)
 		{
 			if(!collided)
 			{
@@ -82,7 +84,7 @@ public class PlayerCarObject : MonoBehaviour {
 	IEnumerator EndGame(float delay)
 	{
     	yield return new WaitForSeconds(delay);
-    	Application.LoadLevel(2);
+    	//Application.LoadLevel(2);
 	}
 	
 }

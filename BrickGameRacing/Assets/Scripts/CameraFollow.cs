@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour {
 	void Update () 
 	{
 		//Stop Camera when car collides
-		if(!Car.collided)
+		if(!Car.collided && !Car.IsPaused)
 		{
 			//forward movement
 			transform.Translate(Vector3.up * Car.movementSpeed);
